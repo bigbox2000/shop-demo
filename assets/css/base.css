@@ -1,0 +1,253 @@
+:root{
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color : #333;
+    --primary-color: #ee4d2d;
+    --border-color : #dbdbdb; 
+    --star-gold-color: #ffce3e;
+    
+    --header-height:120px;
+    --narba-height: 25px;
+    --header-with-search-height: calc( var(--header-height) - var(--narba-height));
+}
+/* đặt biến */
+*{
+    box-sizing: inherit;
+    /* inherrit kế thừa, áp dụng cho tất cả html nhúng file base */
+}
+
+html{
+   font-size: 62.5%;
+   line-height: 1.6rem;
+   /* font size 100% =16px = 1rem, còn khi về 62.5% thì 1rem= 10px, 1.6=16px */
+   font-family: 'Roboto', sans-serif;
+   /* chủng tập hợp những phông chữ k có chanasans-sẻriff*/
+   box-sizing: border-box;
+
+}
+    /* responsive */
+.grid{
+    width: 1400px;
+    max-width: 100%;
+    margin: 0 auto;
+    /* tích hợp hiển thị trên nhiều máy nhỏ hơn*/
+}
+.grid__full-width{
+    width: 100%;
+}
+.grid__row{
+    display: flex;
+    flex-wrap: wrap;
+    /*chứa class này thì cùng 1 hàng*/
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+/* test,khi nào tới responsive sẽ sửa */
+.grid__colum-2{
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 16.667%;
+
+}
+
+.grid__colum-2-4{
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 20%;
+}
+
+.grid__colum-10{
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 83.3334%;
+
+}
+
+/* animation*/
+@keyframes fadein{
+    from{
+       opacity: 0;
+    }
+    to{
+       opacity: 1;
+    }
+}
+@keyframes growth{
+    from{
+        transform: scale(var(--growth-from));
+     }
+     to{
+        transform: scale(var(--growth-to));
+     }
+}
+/* Modal  layout */
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: fadein linear 0.1s;
+}
+.modal__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal__body{
+   
+    --growth-from:0.7; 
+    --growth-to: 1;
+    /* đặt biến cho hiệu ungứ lớn lên từ 70% tới 100% */
+    margin: auto;
+    position: relative; /* vi phan body hiển thị phái dưới nên cần phải thêm thuộc tính relative để phần body hiện lên trên cùng*/
+    z-index: 1; /*mặc định là bằng 0, số càng lớn thì nó sẽ hiện trên cùng, dùng position hoặc cái này đều được*/
+    border-radius: 5px; /* dùng để bo góc*/
+    animation: growth linear 0.3s;
+     
+}
+/* button style*/
+.btn{
+    min-width: 124px;
+    height: 36px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0;
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    padding: 0 12px;
+    line-height: 1.6rem;
+    
+    
+}
+.btn.btn--normal:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn.btn--color{
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.btn.btn--disabled{
+    color: #949494;
+    cursor: default;
+    background-color: #c3c3c3;
+}
+.btn.btn--size-s{
+    height: 32px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+}
+/* selection */
+.home__filter-select{
+    position: relative;
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home__filter-select-label{
+    font-size: 1.4rem;
+
+}
+
+.home__filter-select-icon{
+    font-size: 1.4rem;
+    color: rgb(131,131,131);
+    position: relative;
+    top: -4px
+
+}
+
+.home__filter-select:hover .home__filter-select-list{
+    display: block;
+}
+
+.home__filter-select-list{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 28px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    padding: 10px 16px;
+    list-style: none;
+    display: none;
+    box-shadow: 0 0  3px #ccc;
+    z-index: 1;
+
+}
+
+.home__filter-select-list::before{
+    content: "";
+   display: block;
+   position: absolute;
+   width: 100%;
+   right: 0;
+   top:-20px;
+   height: 30px;
+}
+
+.home__filter-select-link{
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    padding: 5px 0;
+
+}
+
+.home__filter-select-link:hover{
+    color: var(--primary-color);
+
+}
+
+/* pagibation */
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.pagination__item{
+    margin: 0 16px;
+}
+
+.pagination__item-active .pagination__item-link{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination__item-active:hover .pagination__item-link{
+    opacity: 0.6;
+}
+
+.pagination__item-link{
+    --height : 30px;
+    display: block;
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: #939393;
+    min-width: 40px;
+    height: var(--height);
+    text-align: center;
+    line-height: var(--height);
+    border-radius: 2px;
+}
+
